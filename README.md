@@ -46,13 +46,16 @@ gcloud container node-pools list --cluster=webfrontend --zone $MY_ZONE
 
 4. View the new service:
 	kubectl get services
+
 Results a tabulated view eg
+
  NAME      |    TYPE       |    CLUSTER-IP  |    EXTERNAL-IP  |  PORT(S)    |      AGE
 -----------|---------------|----------------|-----------------|-------------|-----------
 kubernetes |   ClusterIP   |   10.51.240.1  |   <none>        |     443/TCP |       5m13s
 nginx      |   LoadBalancer |  10.51.242.233 |  35.239.12.110 |    80:31981/TCP |   2m53s
 
 5. Open a new web browser tab and paste your cluster's external IP address into the address bar.
+
 Results: The default home page of the Nginx browser is displayed.
 
 6. Scale up the number of pods running on your service:
@@ -63,25 +66,27 @@ Results: The default home page of the Nginx browser is displayed.
 
 8. Confirm that your external IP address has not changed:
 	kubectl get services
+
 Results: A tabulated view similar to the one above with an exact external IP address
 
 
 9. Return to the web browser tab in which you viewed your cluster's external IP address. Refresh the page to confirm that the nginx web server is still responding.
+
 Results: The default home page of the Nginx browser is displayed.
 
 
 
 ## Lab2: **Console and Cloud Shell**
 ### Objectives
-#In this lab, you learn how to perform the following tasks:
+In this lab, you learn how to perform the following tasks:
 
--Get access to Google Cloud.
+    -Get access to Google Cloud.
 
--Create a Cloud Storage bucket using the Cloud Console.
+    -Create a Cloud Storage bucket using the Cloud Console.
 
--Create a Cloud Storage bucket using Cloud Shell.
+    -Create a Cloud Storage bucket using Cloud Shell.
 
-#Become familiar with Cloud Shell features.
+*Become familiar with Cloud Shell features.*
 1. Create a bucket using the Cloud Console
 	gsutil mb gs://bark_at
 Results: creates a bucket called 'bark_at'
@@ -101,19 +106,19 @@ Results: Uploads a txt file named gads project to the bucket 'bark_at'
 5. Confirm that the file was uploaded
 	ls
 
-#Create a persistent state in Cloud Shell
+*Create a persistent state in Cloud Shell*
 1. To list available regions, execute the following command:
 	gcloud compute regions list
-2.Select a region from the list and note the value in any text editor.
+2. Select a region from the list and note the value in any text editor.
 	Type in the numeric value that corresponds to your region.
-#This region will now be referred to as [YOUR_REGION] in the remainder of the lab.
 
+*This region will now be referred to as [YOUR_REGION] in the remainder of the lab.*
 1. Create an environment variable and replace [YOUR_REGION] with the region you selected in the previous step:
 	egINFRACLASS_REGION=us-west1-a
 2. Verify it with echo
 	echo $INFRACLASS_REGION
 
-#Append the environment variable to a file
+*Append the environment variable to a file*
 1. Create a subdirectory for materials used in this class
 	mkdir infraclass
 2. Create a file called config in the infraclass directory
@@ -129,12 +134,12 @@ Results: Uploads a txt file named gads project to the bucket 'bark_at'
 	echo $INFRACLASS_PROJECT_ID
 7. Close and re-open Cloud Shell. Then issue the echo command again:
 	exit
-#Reopen cloud shell by clicking >_
+*Reopen cloud shell by clicking* >_
 
 echo $INFRACLASS_PROJECT_ID
 Results:There will be no output because the environment variable no longer exists.
 
-#Modify the bash profile and create persistence
+*Modify the bash profile and create persistence*
 1. Edit the shell profile with the following command:
 	nano .profile
 
@@ -145,4 +150,4 @@ Results:There will be no output because the environment variable no longer exist
 5. Use the echo command to verify that the variable is still set:
 	echo $INFRACLASS_PROJECT_ID
 
-Results:*You should now see the expected value that you set in the config file.* 
+Results:You should now see the expected value that you set in the config file.
